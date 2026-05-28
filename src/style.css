@@ -180,14 +180,11 @@ tr:nth-child(even) { background: #f8fafc; }
 /* =========================================
    إعدادات الطباعة القياسية (Clean Print Architecture)
    ========================================= */
-/* =========================================
-   إعدادات الطباعة القياسية (Clean Print Architecture)
-   ========================================= */
 @media print {
     /* إخفاء شريط الأدوات */
     .toolbar, .no-print { display: none !important; }
     
-    /* 1. استخدام الهوامش الآمنة لحماية الورقة من القص في طابعات HP/Canon */
+    /* 1. هوامش آمنة (Safe Margins) لتجنب صراع الطابعات */
     @page { 
         size: A4 portrait; 
         margin: 10mm; 
@@ -195,53 +192,52 @@ tr:nth-child(even) { background: #f8fafc; }
     
     html, body { 
         width: 100%;
+        height: auto !important; 
         margin: 0 !important; 
         padding: 0 !important; 
         background: white; 
     }
     
-    /* 2. الإلغاء الكامل لأي قيود طولية لمنع الصفحة الفارغة (Phantom Page) */
+    /* 2. الإلغاء الصحيح للطول الإجباري وتثبيت الـ Box-sizing */
     .page { 
         box-sizing: border-box !important;
         width: 100% !important; 
         height: auto !important; 
-        min-height: unset !important; /* إلغاء الطول الإجباري */
+        min-height: unset !important; /* إلغاء الطول الوهمي */
         margin: 0 !important; 
-        padding: 0 !important; /* الورقة هتاخد الهامش من إعدادات الـ @page */
+        padding: 0 !important; 
         box-shadow: none !important; 
-        transform: none !important; 
-        /* تم حذف الـ zoom بالكامل لمعايير فايرفوكس */
+        /* تم حذف الـ zoom نهائياً لضمان التوافق مع Firefox والطابعات */
     }
 
-    /* 3. تصميم متكيف (Adaptive): خطوط متوسطة تكفي 35 طالب بوضوح بدون ما تكش بزيادة */
+    /* 3. تنسيق الجدول والخطوط بشكل مرن */
     th, td { 
-        padding: 4px !important; 
-        font-size: 13px !important; 
-        line-height: 1.2 !important;
+        padding: 4px 6px !important; 
+        font-size: 13px !important; /* حجم متوازن */
     }
     th { font-size: 14px !important; font-weight: bold !important; }
     
-    .header { padding: 5px !important; margin-bottom: 10px !important; }
-    .header h1 { font-size: 22px !important; margin-bottom: 2px !important; }
-    .header h1 span { font-size: 26px !important; }
-    .header p { font-size: 13px !important; margin: 0 !important; }
+    .header { padding: 10px !important; margin-bottom: 10px !important; min-height: auto !important; }
+    .header h1 { font-size: 24px !important; margin-bottom: 5px !important; }
+    .header h1 span { font-size: 28px !important; }
+    .header p { font-size: 14px !important; margin: 0 !important; }
 
-    /* 4. المعايير الحديثة لمنع التقسيم (Modern Break Standards) */
+    /* 4. الأوامر الحديثة لمنع التقسيم (Modern Break Properties) */
     table { 
         margin-bottom: 10px !important; 
-        break-inside: auto !important;
+        break-inside: auto !important; 
     }
-    thead { display: table-header-group !important; }
-    
+    thead { display: table-header-group !important; } 
     tr { 
-        page-break-inside: avoid !important; /* Fallback للمتصفحات القديمة */
-        break-inside: avoid !important; /* Standard الحديث */
+        break-inside: avoid !important; 
+        break-after: auto !important;
+        page-break-inside: avoid !important; /* لدعم المتصفحات الأقدم */
     }
     
     .signatures { 
-        margin-top: 10px !important; 
-        page-break-inside: avoid !important;
         break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin-top: 15px !important; 
     }
     
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
