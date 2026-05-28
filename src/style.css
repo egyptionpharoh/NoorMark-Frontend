@@ -177,54 +177,57 @@ tr:nth-child(even) { background: #f8fafc; }
 /* =========================================
    إعدادات الطباعة الدقيقة (الحل النهائي)
    ========================================= */
+/* =========================================
+   إعدادات الطباعة الدقيقة (عصر الورقة لاستيعاب 35+ طالب)
+   ========================================= */
 @media print {
     .toolbar, .no-print { display: none !important; }
     
-    /* توسيع المساحة المتاحة في ورقة الطباعة */
-    @page { size: A4 portrait; margin: 10mm; }
+    /* تقليل هوامش الصفحة لأقصى حد عشان نكسب مساحة (5 مللي فقط) */
+    @page { size: A4 portrait; margin: 5mm; }
     
     body { margin: 0; padding: 0; background: white; max-width: none; overflow-x: visible; }
     
     .page { 
         box-shadow: none; 
         width: 100%; 
-        min-height: auto !important; /* السماح بتمدد الورقة طبيعياً */
         padding: 0 !important; 
         margin: 0 !important;
         zoom: 1 !important; 
         transform: none !important; 
     }
 
-    /* تصغير طفيف للخطوط والمسافات لاستيعاب أكبر عدد من الطلاب */
+    /* "عصر" الجدول: تقليل الهوامش والخطوط وارتفاع الصف */
     th, td { 
-        padding: 4px 6px !important; 
+        padding: 2px 4px !important; /* تقليل الحشو جداً */
+        font-size: 12px !important; /* خط أصغر ومقروء */
+        line-height: 1.1 !important;
+    }
+    th { font-size: 13px !important; padding: 4px !important; }
+    
+    /* ضغط الهيدر */
+    .header { 
+        min-height: auto !important; 
+        padding: 5px !important; 
+        margin-bottom: 5px !important; 
+    }
+    .header h1 { font-size: 20px !important; margin-bottom: 2px !important; }
+    .header h1 span { font-size: 24px !important; }
+    .header p { font-size: 12px !important; margin: 0 !important; }
+
+    table { 
+        margin-bottom: 5px !important;
+        page-break-inside: auto !important; 
+    }
+    thead { display: table-header-group !important; } 
+    tr { page-break-inside: avoid !important; }
+    
+    /* رفع التوقيعات لفوق شوية */
+    .signatures { 
+        margin-top: 5px !important; 
         font-size: 13px !important; 
     }
-    th { font-size: 14px !important; }
-    
-    .header { 
-        min-height: 80px !important; 
-        padding: 10px !important; 
-        margin-bottom: 10px !important; 
-    }
-    .header h1 { font-size: 22px !important; margin-bottom: 3px !important; }
-    .header h1 span { font-size: 28px !important; }
-    .header p { font-size: 13px !important; }
-
-    /* توجيهات حاسمة للمتصفح للتعامل مع انقسام الجدول */
-    table { 
-        page-break-inside: auto !important; /* السماح للجدول بالانقسام لو عدد الطلاب ضخم */
-        break-inside: auto !important; 
-        margin-bottom: 10px !important;
-    }
-    thead { display: table-header-group !important; } /* تكرار رأس الجدول لو راح صفحة تانية */
-    tr { 
-        page-break-inside: avoid !important; /* منع انقسام صف الطالب نفسه بين صفحتين */
-        break-inside: avoid !important; 
-    }
-    
-    .signatures { margin-top: 10px !important; font-size: 14px !important; }
-    .sign-name { font-size: 16px !important; }
+    .sign-name { font-size: 16px !important; margin-top: 2px !important; }
     
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
