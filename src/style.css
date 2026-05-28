@@ -28,7 +28,7 @@ body {
     overflow-x: hidden;
 }
 
-/* الهيدر الديناميكي (الطباعة) */
+/* الهيدر الديناميكي */
 .header {
     background: var(--header-bg);
     color: var(--header-text);
@@ -48,7 +48,7 @@ body {
 .header p { font-family: 'Cairo', sans-serif; font-size: 15px; margin: 0; opacity: 0.9; white-space: normal; word-wrap: break-word; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 .header p span { font-family: 'Amiri', serif; font-size: 18px; font-weight: bold; padding: 0 5px; }
 
-/* شريط الأدوات (التولبار - مقاس A4 وثابت) */
+/* شريط الأدوات */
 .toolbar { 
     background: white; 
     padding: 15px; 
@@ -60,12 +60,11 @@ body {
     align-items: center;
     flex-wrap: wrap; 
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    width: 210mm; /* عرض الـ A4 بالضبط */
-    margin: 0 auto 20px auto; /* التوسيط */
+    width: 210mm; 
+    margin: 0 auto 20px auto; 
     box-sizing: border-box;
 }
 
-/* ربط التولبار بالثيمات */
 .toolbar.blue { background: #e0e7ff; }
 .toolbar.navy { background: #fce7f3; }
 .toolbar.royal-blue { background: #dbeafe; }
@@ -75,7 +74,6 @@ body {
 .toolbar.gold { background: #fef3c7; }
 .toolbar.simple { background: #ffffff; }
 
-/* عناصر الإدخال والأزرار في التولبار */
 .toolbar input, 
 .toolbar select, 
 .toolbar button, 
@@ -95,7 +93,6 @@ body {
 
 .toolbar input, .toolbar select { border: 1px solid #cbd5e1; background: white; }
 
-/* ألوان الأزرار مرتبطة بالثيم */
 .toolbar button, .custom-file-upload {
     background: var(--header-bg); 
     color: var(--header-text);    
@@ -114,7 +111,7 @@ body {
 
 .simple .toolbar button, .simple .custom-file-upload { text-shadow: none; }
 
-/* ورقة العمل والجدول */
+/* ورقة العمل والجدول في العرض العادي */
 .page { width: 210mm; min-height: 297mm; background: white; margin: 0 auto; padding: 8mm 15mm; box-sizing: border-box; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
 
 table { 
@@ -123,7 +120,6 @@ table {
     margin-bottom: 15px; 
     background: white; 
     border: 1px solid #000; 
-    page-break-inside: avoid; /* منع تقسيم الجدول */
 }
 
 th, td { 
@@ -135,7 +131,7 @@ th, td {
     color: black; 
 }
 th { background: #f1f5f9; color: #0f172a; font-weight: bold; font-size: 15px; }
-tr { border-bottom: 1px solid #000; page-break-inside: avoid; }
+tr { border-bottom: 1px solid #000; }
 tr:nth-child(even) { background: #f8fafc; }
 
 .signatures { margin-top: 20px; display: flex; justify-content: space-between; text-align: center; font-weight: bold; font-size: 15px; padding: 0 20px; color: black; }
@@ -144,14 +140,12 @@ tr:nth-child(even) { background: #f8fafc; }
 /* الـ Landing Page */
 .landing-wrapper { background: radial-gradient(circle at 50% -20%, #2563eb 0%, #020617 80%); min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
 .landing-container { max-width: 1600px; width: 100%; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; padding: 40px 20px; text-align: center; }
-
 .folded-paper-container { display: flex; justify-content: center; align-items: center; margin-bottom: 40px; position: relative; margin-top: 10px; }
 .folded-paper-logo { position: relative; width: 85px; height: 105px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border-radius: 12px 0 12px 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.8); display: flex; align-items: center; justify-content: center; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
 .folded-paper-logo::before { content: ""; position: absolute; top: 0; right: 0; border-width: 0 32px 32px 0; border-style: solid; border-color: transparent transparent #e2e8f0 #e2e8f0; border-bottom-left-radius: 8px; box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.15); }
 .n-check-svg { position: absolute; width: 130px; height: 130px; top: -15px; left: -20px; overflow: visible !important; z-index: 2; }
 .red-check-mark { animation: check-pulse 3s infinite ease-in-out; filter: drop-shadow(0 0 5px rgba(239, 68, 68, 0.6)); }
 @keyframes check-pulse { 0%, 100% { opacity: 0.8; transform: translateY(0); } 50% { opacity: 0.4; transform: translateY(-3px); } }
-
 .glow-title { font-size: 4.5rem; font-weight: 800; margin: 0; background: linear-gradient(135deg, #ffffff 30%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 10px rgba(212,175,55,.25), 0 0 20px rgba(212,175,55,.15); }
 .platform-desc { max-width: 650px; font-size: 1.25rem; line-height: 1.8; color: #cbd5e1; margin: 24px 0 40px; }
 .cta-button { background: linear-gradient(90deg, #d4af37 0%, #b48600 100%); color: #0f172a; font-size: 1.2rem; font-weight: 700; padding: 16px 44px; border: none; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 12px; }
@@ -169,7 +163,7 @@ tr:nth-child(even) { background: #f8fafc; }
 .click-to-expand { text-align: center; font-size: 0.95rem; color: #94a3b8; margin-top: 15px; animation: pulse 2s infinite; }
 @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 
-/* التجاوب مع شاشات اللاب توب (تصغير بدون بوظان الصفحة) */
+/* التجاوب مع الشاشة */
 @media screen and (max-width: 1440px) {
     .page { zoom: 0.9; margin-bottom: 20px; }
 }
@@ -180,13 +174,57 @@ tr:nth-child(even) { background: #f8fafc; }
     .platform-desc { font-size: 1.1rem; }
 }
 
-/* إعدادات الطباعة الدقيقة لمنع تكسير الجدول */
+/* =========================================
+   إعدادات الطباعة الدقيقة (الحل النهائي)
+   ========================================= */
 @media print {
     .toolbar, .no-print { display: none !important; }
-    thead { display: table-header-group !important; }
-    table, tr, td { page-break-inside: avoid !important; break-inside: avoid !important; }
-    @page { size: A4 portrait; margin: 15mm; }
+    
+    /* توسيع المساحة المتاحة في ورقة الطباعة */
+    @page { size: A4 portrait; margin: 10mm; }
+    
     body { margin: 0; padding: 0; background: white; max-width: none; overflow-x: visible; }
-    .page { box-shadow: none; width: 100%; zoom: 1 !important; transform: none !important; margin: 0 !important; }
+    
+    .page { 
+        box-shadow: none; 
+        width: 100%; 
+        min-height: auto !important; /* السماح بتمدد الورقة طبيعياً */
+        padding: 0 !important; 
+        margin: 0 !important;
+        zoom: 1 !important; 
+        transform: none !important; 
+    }
+
+    /* تصغير طفيف للخطوط والمسافات لاستيعاب أكبر عدد من الطلاب */
+    th, td { 
+        padding: 4px 6px !important; 
+        font-size: 13px !important; 
+    }
+    th { font-size: 14px !important; }
+    
+    .header { 
+        min-height: 80px !important; 
+        padding: 10px !important; 
+        margin-bottom: 10px !important; 
+    }
+    .header h1 { font-size: 22px !important; margin-bottom: 3px !important; }
+    .header h1 span { font-size: 28px !important; }
+    .header p { font-size: 13px !important; }
+
+    /* توجيهات حاسمة للمتصفح للتعامل مع انقسام الجدول */
+    table { 
+        page-break-inside: auto !important; /* السماح للجدول بالانقسام لو عدد الطلاب ضخم */
+        break-inside: auto !important; 
+        margin-bottom: 10px !important;
+    }
+    thead { display: table-header-group !important; } /* تكرار رأس الجدول لو راح صفحة تانية */
+    tr { 
+        page-break-inside: avoid !important; /* منع انقسام صف الطالب نفسه بين صفحتين */
+        break-inside: avoid !important; 
+    }
+    
+    .signatures { margin-top: 10px !important; font-size: 14px !important; }
+    .sign-name { font-size: 16px !important; }
+    
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
