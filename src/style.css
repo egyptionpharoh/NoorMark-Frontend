@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&family=Aref+Amiri:wght@400;700&family=Reem+Kufi:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Reem+Kufi:wght@400;700&display=swap');
 :root {
     --header-bg: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
     --header-text: white;
