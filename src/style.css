@@ -39,40 +39,41 @@ body { margin: 0; padding: 20px; background: #e2e8f0; font-family: 'Cairo', sans
 .header p span { font-family: 'Amiri', serif; font-size: 18px; font-weight: bold; padding: 0 5px; }
 
 /* شريط الأدوات والأزرار الموحدة */
-/* شريط الأدوات الثابت الاحترافي */
+/* لوحة التحكم الثابتة فوق الـ A4 بالضبط */
 .toolbar { 
     background: white; 
     padding: 15px; 
     border-radius: 8px; 
     margin-bottom: 20px; 
     display: flex; 
-    gap: 10px; /* تقليل الفراغ شوية عشان نضمن ثبات العناصر */
+    gap: 10px; 
     justify-content: center; 
     align-items: center;
-    flex-wrap: nowrap; /* منع النزول لسطر جديد تماماً */
+    flex-wrap: wrap; /* نرجعها wrap عشان لو العناصر زادت متفرشش بعرض الشاشة */
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    width: 100%;
-    min-width: 900px; /* ضمان عدم انكماش العناصر عن حد معين */
-    overflow-x: auto; /* لو الشاشة صغرت جداً، هيعمل سكرول للشريط نفسه بدل ما يكسر التصميم */
+    
+    /* التعديل الجوهري للثبات */
+    width: 210mm; /* عرض الـ A4 بالضبط */
+    margin: 0 auto 20px auto; /* توسيط اللوحة فوق الورقة */
     box-sizing: border-box;
 }
 
-/* منع العناصر من الانكماش عند الزوم */
+/* عشان نضمن إن المدخلات متفرشش */
 .toolbar input, 
 .toolbar select, 
 .toolbar button, 
 .custom-file-upload { 
     height: 46px; 
-    flex-shrink: 0; /* ده السطر السحري: بيمنع الزرار إنه يصغر أو يتحرك */
+    flex-shrink: 1; /* السماح للعناصر بالانكماش لو المساحة ضاقت بدل ما تفرش */
+    max-width: 150px; /* تحديد عرض أقصى لكل خانة */
     box-sizing: border-box; 
-    font-size: 14px; /* تصغير الخط شوية عشان الزووم ميأثرش */
+    font-size: 13px; /* تصغير الخط بسيط عشان تاخد البيانات كلها */
     font-family: 'Cairo', sans-serif; 
     border-radius: 5px; 
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 10px;
-    white-space: nowrap; /* منع التفاف النصوص جوه الأزرار */
+    padding: 0 8px;
 }
 .toolbar button:hover, .custom-file-upload:hover {
     filter: brightness(1.2);
