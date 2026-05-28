@@ -109,7 +109,10 @@ const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
                       <tr key={student.id}>
                           <td>{student.id}</td>
                           <td>{student.name}</td>
-                          <td>{student.score}</td>
+                          <td>
+                              {/* تعديل عرض الدرجة: بنقص النص عند علامة / وبناخد أول جزء فقط */}
+                              {String(student.score).split('/')[0]}
+                          </td>
                       </tr>
                   ))}
               </tbody>
