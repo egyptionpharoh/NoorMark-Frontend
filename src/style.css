@@ -215,27 +215,24 @@ body {
     overflow-x: hidden; /* لمنع أي سكرول عرضي مزعج */
 }
 
-/* 2. تصغير ورقة النتيجة (A4) بنسبة بسيطة عشان تظهر بالكامل براحة على اللاب توب */
+/* حل مشكلة الصفحات الإضافية والمسافات باستخدام الـ zoom */
 @media screen and (max-width: 1440px) {
     .page {
-        transform: scale(0.9); /* بيصغر الورقة بنسبة 10% */
-        transform-origin: top center; /* بيخلي التصغير يبدأ من فوق عشان ميبوظش المسافات */
-        margin-bottom: -100px; /* لتعويض المساحة البيضاء اللي بتظهر بعد التصغير */
+        zoom: 0.9; /* بديل الـ transform اللي مبيأثرش على مساحة الصفحة */
+        margin-bottom: 20px; /* مسافة بسيطة ومريحة بدل المساحات السالبة */
     }
 }
 
-/* 3. شاشات اللاب توب الصغيرة جداً (مثل 1366px) */
 @media screen and (max-width: 1366px) {
     .page {
-        transform: scale(0.85); /* تصغير 15% للشاشات الأصغر */
-        margin-bottom: -150px;
+        zoom: 0.85; 
+        margin-bottom: 20px;
     }
-    
-    /* تصغير خطوط صفحة الهبوط شوية عشان تناسب اللاب توب الصغير */
-    .glow-title {
-        font-size: 3.5rem;
-    }
-    .platform-desc {
-        font-size: 1.1rem;
-    }
+    .glow-title { font-size: 3rem; } /* تصغير العنوان شوية عشان ميكسرش التصميم */
+    .platform-desc { font-size: 1.1rem; }
+}
+
+/* التأكد إن الجدول لا يُقسم على صفحتين */
+table {
+    page-break-inside: avoid;
 }
