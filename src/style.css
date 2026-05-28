@@ -178,56 +178,56 @@ tr:nth-child(even) { background: #f8fafc; }
    إعدادات الطباعة الدقيقة (الحل النهائي)
    ========================================= */
 /* =========================================
-   إعدادات الطباعة الدقيقة (عصر الورقة لاستيعاب 35+ طالب)
+   إعدادات الطباعة (الحل الجذري للصفحات الفارغة والمقاسات)
    ========================================= */
 @media print {
     .toolbar, .no-print { display: none !important; }
     
-    /* تقليل هوامش الصفحة لأقصى حد عشان نكسب مساحة (5 مللي فقط) */
-    @page { size: A4 portrait; margin: 5mm; }
+    /* 1. السطر ده بيمنع المتصفح يطبع الرابط والتاريخ، وبيمنع الصفحة التانية الفاضية */
+    @page { 
+        size: A4 portrait; 
+        margin: 0 !important; 
+    }
     
-    body { margin: 0; padding: 0; background: white; max-width: none; overflow-x: visible; }
-    
-    .page { 
-        box-shadow: none; 
-        width: 100%; 
+    html, body { 
+        width: 100%;
+        height: auto !important; 
+        margin: 0 !important; 
         padding: 0 !important; 
-        margin: 0 !important;
+        background: white; 
+    }
+    
+    /* 2. إلغاء الطول الإجباري اللي كان بيعمل الصفحة الإضافية */
+    .page { 
+        width: 100% !important; 
+        min-height: auto !important; /* السر كله هنا */
+        margin: 0 !important; 
+        padding: 15mm !important; /* عملنا الهامش من جوه الورقة نفسها */
+        box-shadow: none !important; 
         zoom: 1 !important; 
         transform: none !important; 
+        page-break-after: avoid !important;
     }
 
-    /* "عصر" الجدول: تقليل الهوامش والخطوط وارتفاع الصف */
+    /* 3. نرجع الخطوط لحجمها الطبيعي الفخم والمقروء */
     th, td { 
-        padding: 2px 4px !important; /* تقليل الحشو جداً */
-        font-size: 12px !important; /* خط أصغر ومقروء */
-        line-height: 1.1 !important;
+        padding: 6px !important; 
+        font-size: 14px !important; 
+        line-height: normal !important;
     }
-    th { font-size: 13px !important; padding: 4px !important; }
+    th { font-size: 15px !important; font-weight: bold !important; }
     
-    /* ضغط الهيدر */
-    .header { 
-        min-height: auto !important; 
-        padding: 5px !important; 
-        margin-bottom: 5px !important; 
-    }
-    .header h1 { font-size: 20px !important; margin-bottom: 2px !important; }
-    .header h1 span { font-size: 24px !important; }
-    .header p { font-size: 12px !important; margin: 0 !important; }
+    .header { padding: 15px !important; margin-bottom: 15px !important; }
+    .header h1 { font-size: 26px !important; }
+    .header h1 span { font-size: 32px !important; }
+    .header p { font-size: 15px !important; }
 
-    table { 
-        margin-bottom: 5px !important;
-        page-break-inside: auto !important; 
-    }
-    thead { display: table-header-group !important; } 
-    tr { page-break-inside: avoid !important; }
-    
-    /* رفع التوقيعات لفوق شوية */
+    /* 4. إجبار المتصفح إن التوقيعات متتقطعش */
+    table { margin-bottom: 15px !important; }
     .signatures { 
-        margin-top: 5px !important; 
-        font-size: 13px !important; 
+        page-break-inside: avoid !important; 
+        margin-top: 15px !important; 
     }
-    .sign-name { font-size: 16px !important; margin-top: 2px !important; }
     
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
