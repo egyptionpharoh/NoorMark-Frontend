@@ -39,22 +39,41 @@ body { margin: 0; padding: 20px; background: #e2e8f0; font-family: 'Cairo', sans
 .header p span { font-family: 'Amiri', serif; font-size: 18px; font-weight: bold; padding: 0 5px; }
 
 /* شريط الأدوات والأزرار الموحدة */
-.toolbar { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-.toolbar input, .toolbar select { padding: 10px 15px; font-size: 15px; font-family: 'Cairo', sans-serif; border: 1px solid #cbd5e1; border-radius: 5px; }
-
-.toolbar button, .custom-file-upload {
-    background: var(--header-bg);
-    color: var(--header-text);
-    border: 1px solid var(--header-border);
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: 'Cairo', sans-serif;
-    transition: all 0.3s ease;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+/* شريط الأدوات الثابت الاحترافي */
+.toolbar { 
+    background: white; 
+    padding: 15px; 
+    border-radius: 8px; 
+    margin-bottom: 20px; 
+    display: flex; 
+    gap: 10px; /* تقليل الفراغ شوية عشان نضمن ثبات العناصر */
+    justify-content: center; 
+    align-items: center;
+    flex-wrap: nowrap; /* منع النزول لسطر جديد تماماً */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    width: 100%;
+    min-width: 900px; /* ضمان عدم انكماش العناصر عن حد معين */
+    overflow-x: auto; /* لو الشاشة صغرت جداً، هيعمل سكرول للشريط نفسه بدل ما يكسر التصميم */
+    box-sizing: border-box;
 }
 
+/* منع العناصر من الانكماش عند الزوم */
+.toolbar input, 
+.toolbar select, 
+.toolbar button, 
+.custom-file-upload { 
+    height: 46px; 
+    flex-shrink: 0; /* ده السطر السحري: بيمنع الزرار إنه يصغر أو يتحرك */
+    box-sizing: border-box; 
+    font-size: 14px; /* تصغير الخط شوية عشان الزووم ميأثرش */
+    font-family: 'Cairo', sans-serif; 
+    border-radius: 5px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    white-space: nowrap; /* منع التفاف النصوص جوه الأزرار */
+}
 .toolbar button:hover, .custom-file-upload:hover {
     filter: brightness(1.2);
     transform: translateY(-2px);
