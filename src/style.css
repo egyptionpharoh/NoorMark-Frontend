@@ -178,15 +178,16 @@ tr:nth-child(even) { background: #f8fafc; }
    إعدادات الطباعة الدقيقة (الحل النهائي)
    ========================================= */
 /* =========================================
-   إعدادات الطباعة (الحل الجذري للصفحات الفارغة والمقاسات)
+   إعدادات الطباعة القياسية (Clean Print Architecture)
    ========================================= */
 @media print {
+    /* إخفاء شريط الأدوات */
     .toolbar, .no-print { display: none !important; }
     
-    /* 1. السطر ده بيمنع المتصفح يطبع الرابط والتاريخ، وبيمنع الصفحة التانية الفاضية */
+    /* 1. هوامش آمنة (Safe Margins) لتجنب صراع الطابعات */
     @page { 
         size: A4 portrait; 
-        margin: 0 !important; 
+        margin: 10mm; 
     }
     
     html, body { 
@@ -197,35 +198,45 @@ tr:nth-child(even) { background: #f8fafc; }
         background: white; 
     }
     
-    /* 2. إلغاء الطول الإجباري اللي كان بيعمل الصفحة الإضافية */
+    /* 2. الإلغاء الصحيح للطول الإجباري وتثبيت الـ Box-sizing */
     .page { 
+        box-sizing: border-box !important;
         width: 100% !important; 
-        min-height: auto !important; /* السر كله هنا */
+        height: auto !important; 
+        min-height: unset !important; /* إلغاء الطول الوهمي */
         margin: 0 !important; 
-        padding: 15mm !important; /* عملنا الهامش من جوه الورقة نفسها */
+        padding: 0 !important; 
         box-shadow: none !important; 
-        zoom: 1 !important; 
-        transform: none !important; 
-        page-break-after: avoid !important;
+        /* تم حذف الـ zoom نهائياً لضمان التوافق مع Firefox والطابعات */
     }
 
-    /* 3. نرجع الخطوط لحجمها الطبيعي الفخم والمقروء */
+    /* 3. تنسيق الجدول والخطوط بشكل مرن */
     th, td { 
-        padding: 6px !important; 
-        font-size: 14px !important; 
-        line-height: normal !important;
+        padding: 4px 6px !important; 
+        font-size: 13px !important; /* حجم متوازن */
     }
-    th { font-size: 15px !important; font-weight: bold !important; }
+    th { font-size: 14px !important; font-weight: bold !important; }
     
-    .header { padding: 15px !important; margin-bottom: 15px !important; }
-    .header h1 { font-size: 26px !important; }
-    .header h1 span { font-size: 32px !important; }
-    .header p { font-size: 15px !important; }
+    .header { padding: 10px !important; margin-bottom: 10px !important; min-height: auto !important; }
+    .header h1 { font-size: 24px !important; margin-bottom: 5px !important; }
+    .header h1 span { font-size: 28px !important; }
+    .header p { font-size: 14px !important; margin: 0 !important; }
 
-    /* 4. إجبار المتصفح إن التوقيعات متتقطعش */
-    table { margin-bottom: 15px !important; }
+    /* 4. الأوامر الحديثة لمنع التقسيم (Modern Break Properties) */
+    table { 
+        margin-bottom: 10px !important; 
+        break-inside: auto !important; 
+    }
+    thead { display: table-header-group !important; } 
+    tr { 
+        break-inside: avoid !important; 
+        break-after: auto !important;
+        page-break-inside: avoid !important; /* لدعم المتصفحات الأقدم */
+    }
+    
     .signatures { 
-        page-break-inside: avoid !important; 
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
         margin-top: 15px !important; 
     }
     
