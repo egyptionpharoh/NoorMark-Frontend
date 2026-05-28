@@ -6,10 +6,10 @@ import LandingPage from './LandingPage';
 
 const headerThemes = [
   { value: 'blue', label: 'الهيدر الأزرق الملكي ' },
-  { value: 'navy', label: 'الهيدر الأزرق الفاتح' },
+    { value: 'navy', label: 'الهيدر الوردي' }, 
   { value: 'royal-blue', label: 'الهيدر الأزرق الداكن' },
   { value: 'maroon', label: 'الهيدر النبيتي الملكي ' },
-  { value: 'emerald', label: 'الهيدر الأخضر الداكن' },
+    { value: 'emerald', label: 'الهيدر البنفسجي' },
   { value: 'classic-school', label: 'الهيدر الرمادي ' },
   { value: 'arabic-art', label: 'الهيدر الديواني' },
   { value: 'gold', label: 'الهيدر الذهبي' },
